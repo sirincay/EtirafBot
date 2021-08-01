@@ -3,7 +3,7 @@ const { Telegraf } = require('telegraf')
 const bot = new Telegraf('1717589454:AAE3YFmX5Fu6OscZvc4q5tkmKgGErOQJMe0')
 
 
-bot.start((ctx) => ctx.reply(`Salam ${ctx.from.first_name}. mənə gizli və ya açıq etiraf edirsən məndə onu öz kanalımda paylaşıram. Etirafını yazdıqdan sonra Gizli və ya Açıq paylaşacağım barədə soruşacam. Buyur etirafını et 🤎`))
+bot.start((ctx) => ctx.reply(`Salam ${ctx.from.user_name}. mənə gizli və ya açıq etiraf edirsən məndə onu öz kanalımda paylaşıram. Etirafını yazdıqdan sonra Gizli və ya Açıq paylaşacağım barədə soruşacam. Buyur etirafını et 🤎`))
 
 
 
@@ -21,7 +21,7 @@ bot.command("admin", ctx => {
 let metn;
 
 bot.on("text", ctx => {
-	let kanalid = -1001580366831
+	let kanalid = -1001424334391
 	metn = ctx.message.text
 ctx.telegram.sendMessage(ctx.from.id, 'Etirafınız necə paylaşılsın?',{
 	reply_markup: {
@@ -39,7 +39,7 @@ ctx.telegram.sendMessage(ctx.from.id, 'Etirafınız necə paylaşılsın?',{
 
 bot.action("Açıq☠️ ", ctx => {
 	let aciqetiraf= `Etiraf edən şəxs ☠️ : ${ctx.from.first_name}\n\n\n`
-	let kanalid = -1001580366831
+	let kanalid = -1001424334391
 	var seliqe = `Etdiyi etiraf ✍️ : ${metn}\n\n\n`
 	var sonda = 'Etiraf etmək üçün ☂️ : @MyEtirafBot-a yazın.'
 	ctx.telegram.sendMessage(kanalid, `${aciqetiraf+seliqe+sonda}`)
@@ -51,7 +51,7 @@ bot.action("Açıq☠️ ", ctx => {
 bot.action("Gizli☠️ ", ctx => {
 	let eden = ctx.from.first_name 
 	let aciqetiraf= `Etiraf edən şəxs ☠️ : Anonim\n\n\n`
-	let kanalid = -1001525895163
+	let kanalid = -1001424334391
 	var seliqe = `Etdiyi etiraf ✍️ : ${metn}\n\n\n`
 	var sonda = 'Etiraf etmək üçün ☂️ : @MyEtirafBot-a yazın.'
 	ctx.telegram.sendMessage(kanalid, `${eden}\n\n\n${aciqetiraf+seliqe+sonda}`)
@@ -62,6 +62,6 @@ bot.action("Gizli☠️ ", ctx => {
 
 
 
-console.log('Zro Ferid')
+console.log('Aktif Oldu')
 
 bot.launch()
