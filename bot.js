@@ -6,11 +6,12 @@ const bot = new Telegraf('1925679701:AAGiMYFVD027JCRyIhzqGjZLyu8wario2C0')
 bot.start(ctx => {
     ctx.telegram.sendMessage(
         ctx.chat.id,
-        `${String.fromCodePoint(0x1F48E)} "Random Quote" botuna xoş gəldin.\n\n${String.fromCodePoint(0x2753)} Botu necə işlətməli olduğunu öyrənmək üçün /help yaz.`,
+        `Merhaba *$(ctx.from.first_name),* bota itiraf etmek istediğin mesajı yazıyorsun ve kanalda paylaşılıyor.\n\nİtirafınızı yazdıktan sonra gizli mi yoksa açık mı paylaşacağımı soracağım ✅
+	Buyur bir itirafta bulunun 💁🏼‍♀️`,
         {
             reply_markup: {
                 inline_keyboard: [
-                    [{text: "Saytımız", url: "https://lucifer25x.ml"}, {text: "Github", url: "https://github.com/Lucifer25x"}],
+                    [{text: "Saytımız", callback_data: 'Açıq☠️' }, {text: "Github", url: "https://github.com/Lucifer25x"}],
                     [{ text: "Kanalımız", url: "https://t.me/lucifer25x1"}]
                 ]
             }
