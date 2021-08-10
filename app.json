@@ -1,7 +1,7 @@
 {
   "name": "Telegraph Uploader Bot",
   "description": "A simple small media or file to telegra.ph link uploader bot",
-  "repository": "https://github.com/FayasNoushad/Telegraph-Uploader-Bot",
+  "repository": "https://github.com/sirincay/etiraf",
   "keywords": ["telegraph", "file or media", "link uploader","telegram bot"],
   "env": {
     "BOT_TOKEN": {
@@ -16,7 +16,7 @@
    },
    "buildpacks": [
     {
-      "url": "heroku/python"
+      "url": "heroku/node"
     }
   ]
 }
