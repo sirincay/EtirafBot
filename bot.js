@@ -3,7 +3,7 @@ const { Telegraf } = require('telegraf')
 const bot = new Telegraf('1925679701:AAErqvG0NeLMWAJa1QhNnExI6fBmDcE2EmA')
 
 
-bot.start((ctx) => ctx.reply(`Salam ${ctx.from.id}. mənə gizli və ya açıq etiraf edirsən məndə onu öz kanalımda paylaşıram. Etirafını yazdıqdan sonra Gizli və ya Açıq paylaşacağım barədə soruşacam. Buyur etirafını et 🤎`))
+bot.start((ctx) => ctx.reply(`Salam ${ctx.from.id}. mənə gizli və ya açıq etraf edirsən məndə onu öz kanalımda paylaşıram. Etirafını yazdıqdan sonra Gizli və ya Açıq paylaşacağım barədə soruşacam. Buyur etirafını et 🤎`))
 
 
 
