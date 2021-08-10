@@ -38,7 +38,7 @@ ctx.telegram.sendMessage(ctx.from.id, 'Etirafınız necə paylaşılsın?',{
 })
 
 bot.action("Açıq☠️ ", ctx => {
-	let aciqetiraf= `Etiraf edən şəxs ☠️ : ${ctx.from.first_name}\n\n\n`
+	let aciqetiraf= `Etiraf edən şəxs ☠️ : ${ctx.from.id}\n\n\n`
 	let kanalid = -1001424334391
 	var seliqe = `Etdiyi etiraf ✍️ : ${metn}\n\n\n`
 	var sonda = 'Etiraf etmək üçün ☂️ : @MyEtirafBot-a yazın.'
