@@ -1,14 +1,15 @@
 const { Telegraf } = require('telegraf')
 
-const bot = new Telegraf('1925679701:AAErqvG0NeLMWAJa1QhNnExI6fBmDcE2EmA')
+const bot = new Telegraf('1925679701:AAGiMYFVD027JCRyIhzqGjZLyu8wario2C0')
 
 
-bot.start((ctx) => ctx.reply(`Salam ${ctx.from.first_name}. mənə gizli və ya açıq etiraf edirsən məndə onu öz kanalımda paylaşıram. Etirafını yazdıqdan sonra Gizli və ya Açıq paylaşacağım barədə soruşacam. Buyur etirafını et 🤎`))
+bot.start((ctx) => ctx.reply(`Salam ${ctx.from.firstname}. 
+mənə gizli və ya açıq etiraf edirsən məndə onu öz kanalımda paylaşıram. Etirafını yazdıqdan sonra Gizli və ya Açıq paylaşacağım barədə soruşacam. Buyur etirafını et 🤎`))
 
 
 
 bot.command("admin", ctx => {
-	if(ctx.from.id===CREATOR_ID){
+	if(ctx.from.id===1816126399){
 		ctx.reply("Giriş uğurludur.")
 	}else{
 		ctx.reply("Giriş uğursuzdur.")
