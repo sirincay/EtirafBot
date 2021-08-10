@@ -1,6 +1,4 @@
-RUN npm init -y
-RUN npm install --save telegraf
-RUN mkdir /app/
-WORKDIR /app/
-COPY . /app/
+FROM debian:latest
+
+COPY . .
 CMD node bot.js
