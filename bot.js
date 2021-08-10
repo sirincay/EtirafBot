@@ -6,16 +6,17 @@ const bot = new Telegraf('1925679701:AAGiMYFVD027JCRyIhzqGjZLyu8wario2C0')
 bot.start(ctx => {
     ctx.telegram.sendMessage(
         ctx.chat.id,
-        `Merhaba *$(ctx.from.first_name),* bota itiraf etmek istediğin mesajı yazıyorsun ve kanalda paylaşılıyor.\n\nİtirafınızı yazdıktan sonra gizli mi yoksa açık mı paylaşacağımı soracağım ✅
-	Buyur bir itirafta bulunun 💁🏼‍♀️`,
+	return ctx.replyWithMarkdown(trueTrim(`
+        Merhaba *$(ctx.from.first_name),* bota itiraf etmek istediğin mesajı yazıyorsun ve kanalda paylaşılıyor.\n\nİtirafınızı yazdıktan sonra gizli mi yoksa açık mı paylaşacağımı soracağım ✅
+	Buyur bir itirafta bulunun 💁🏼‍♀️`,)
         {
             reply_markup: {
                 inline_keyboard: [
-                    [{text: "Saytımız", callback_data: 'Açıq☠️' }, {text: "Github", url: "https://github.com/Lucifer25x"}],
+                    [{text: "Saytımız", url: "https://teslagame.tk" }, {text: "Github", url: "https://github.com/Lucifer25x"}],
                     [{ text: "Kanalımız", url: "https://t.me/lucifer25x1"}]
                 ]
             }
-        }
+       }
     )
 });
 
@@ -68,12 +69,20 @@ bot.action("Gizli☠️ ", ctx => {
 	let aciqetiraf= `Etiraf edən şəxs ☠️ : Anonim\n\n\n`
 	let kanalid = -1001424334391
 	var seliqe = `Etdiyi etiraf ✍️ : ${metn}\n\n\n`
-	var sonda = 'Etiraf etmək üçün ☂️ : @MyEtirafBot-a yazın.'
+	var sonda = 'Etiraf etmək üçün ☂️ : @ConfessTrBot-a yazın.'
 	ctx.telegram.sendMessage(kanalid, `${eden}\n\n\n${aciqetiraf+seliqe+sonda}`)
-	ctx.reply('Etirafınız göndərildi. Yoxlanıldıqdan sonra @MenimEtirafim kanalında paylaşılacaq.')
+	ctx.reply('Etirafınız göndərildi. Yoxlanıldıqdan sonra @ConfessTr kanalında paylaşılacaq.')
 })
 
+bot.catch((err) => {
+    console.log('Error: ', err)
+})
 
+// Botun nickname alan kod
+bot.telegram.getMe().then(botInfo => {
+    bot.options.username = botInfo.username
+    console.log(`Bot Aktif Oldu! => ${bot.options.username}`)
+})
 
 
 
