@@ -14,13 +14,22 @@ bot.command("admin", ctx => {
 		ctx.reply("Giriş uğursuzdur.")
 	
 	}
-})
-
-
-
-let metn;
 	
+let metn;
 
+bot.on("text", ctx => {
+  let kanalid = -1001580366831
+  metn = ctx.message.text
+ctx.telegram.sendMessage(ctx.from.id, 'Etirafınız necə paylaşılsın?',{
+  reply_markup: {
+    inline_keyboard: [
+    
+    [{text: 'Açıq☠️ ', callback_data: 'Açıq☠️ '}],
+    [{text: 'Gizli☠️ ', callback_data: 'Gizli☠️ '}]
+    
+    ]
+  }
+})
 })
 
 bot.action("Açıq☠️ ", ctx => {
@@ -44,10 +53,23 @@ bot.action("Gizli☠️ ", ctx => {
 	ctx.reply('Etirafınız göndərildi. Yoxlanıldıqdan sonra @ConfessTr kanalında paylaşılacaq.')
 })
 
+	
+	bot.command('ad', async (ctx, next) => {
+    await ctx.telegram.sendMessage(ctx.chat.id, `<b>${ctx.from.first_name}</b>`, { parse_mode: 'HTML' })
+    return next();
+});
 
+	
+// Botun adını alan kod
+bot.telegram.getMe().then(botInfo => {
+    bot.options.username = botInfo.username
+    console.log(`Bot Başlatıldı! => ${bot.options.username}`)
+})
 
-
-
-console.log('Aktif Oldu')
+// Kodlarda bir səhv varsa, bunun sayəsində işləməyə davam edər.
+bot.catch((err) => {
+    console.log('Error: ', err)
+})
+	
 
 bot.launch()
