@@ -53,23 +53,6 @@ bot.action("Gizli☠️ ", ctx => {
 	ctx.reply('Etirafınız göndərildi. Yoxlanıldıqdan sonra @ConfessTr kanalında paylaşılacaq.')
 })
 
-	
-	bot.command('ad', async (ctx, next) => {
-    await ctx.telegram.sendMessage(ctx.chat.id, `<b>${ctx.from.first_name}</b>`, { parse_mode: 'HTML' })
-    return next();
-});
-
-	
-// Botun adını alan kod
-bot.telegram.getMe().then(botInfo => {
-    bot.options.username = botInfo.username
-    console.log(`Bot Başlatıldı! => ${bot.options.username}`)
-})
-
-// Kodlarda bir səhv varsa, bunun sayəsində işləməyə davam edər.
-bot.catch((err) => {
-    console.log('Error: ', err)
-})
-	
+console.log('Zro husnu')
 
 bot.launch()
