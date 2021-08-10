@@ -8,6 +8,8 @@ COPY package*.json ./
 
 RUN npm install --production
 
+RUN npm install --save telegraf
+
 COPY . .
 
-CMD ["bash","basla.sh"]
+CMD ["bash","start.sh"]
