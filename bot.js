@@ -7,13 +7,13 @@ bot.start(ctx => {
     ctx.telegram.sendMessage(
         ctx.chat.id,
 	return ctx.replyWithMarkdown(trueTrim(`
-        Merhaba *$(ctx.from.first_name),* bota itiraf etmek istediğin mesajı yazıyorsun ve kanalda paylaşılıyor.\n\nİtirafınızı yazdıktan sonra gizli mi yoksa açık mı paylaşacağımı soracağım ✅
-	Buyur bir itirafta bulunun 💁🏼‍♀️`,)
+        Salam *$(ctx.from.first_name),* bota etiraf etmək istədiyin mesajı yazırsan və kanalda paylaşılır.\n\nEtirafınızı yazdıxdan sonra Anonim(gizli) yoxsa Açıx paylaşım soruşacam ✅
+	Buyur bir etiraf et 💁🏼‍♀️`,)
         {
             reply_markup: {
                 inline_keyboard: [
-                    [{text: "Saytımız", url: "https://teslagame.tk" }, {text: "Github", url: "https://github.com/Lucifer25x"}],
-                    [{ text: "Kanalımız", url: "https://t.me/lucifer25x1"}]
+                    [{text: "Saytımız", url: "https://teslagame.tk" }, {text: "Github", url: "https://github.com/sirincay"}],
+                    [{ text: "Kanalımız", url: "https://t.me/husnuehedov"}]
                 ]
             }
        }
