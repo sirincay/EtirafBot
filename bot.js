@@ -6,11 +6,11 @@ const bot = new Telegraf('1984021148:AAG5yLYXcrOFkb642hpIBVljzVZOwr8_YLs')
 bot.start(ctx => {
     ctx.telegram.sendMessage(
         ctx.chat.id,
-	 `Salam $(ctx.from.first_name), bota etiraf etmək istədiyin mesajı yazırsan və kanalda paylaşılır.\n\nEtirafınızı yazdıxdan sonra Anonim(gizli) yoxsa Açıx paylaşım soruşacam ✅\n\nBuyur Bir Etiraf Et 💁🏼‍♀️`,
+	 `Salam $(ctx.from.first_name) , bota etiraf etmək istədiyin mesajı yazırsan və kanalda paylaşılır.\n\nEtirafınızı yazdıxdan sonra Anonim(gizli) yoxsa Açıx paylaşım soruşacam ✅\n\nBuyur Bir Etiraf Et 💁🏼‍♀️`,
         {
             reply_markup: {
                 inline_keyboard: [
-                    [{text: "Etiraf Et 📌", callback_data: "Açıq 💃🏻" }, {text: "Etiraf Kanalı 📣", url: "https://t.me/myetiraf"}]
+                    [{text: "Etiraf Et 📌", url: "https://t.me/husnuehedov" }, {text: "Etiraf Kanalı 📣", url: "https://t.me/myetiraf"}]
                 ]
             }
        }
@@ -34,7 +34,7 @@ bot.command("admin", ctx => {
 let metn;
 
 bot.on("text", ctx => {
-	let kanalid = -1513355119
+	let kanalid = -1001424334391
 	metn = ctx.message.text
 ctx.telegram.sendMessage(ctx.from.id, 'Etirafınız necə paylaşılsın?',{
 	reply_markup: {
@@ -52,7 +52,7 @@ ctx.telegram.sendMessage(ctx.from.id, 'Etirafınız necə paylaşılsın?',{
 
 bot.action("Açıq 💃🏻 ", ctx => {
 	let aciqetiraf= `Etiraf edən şəxs 👤 : ${ctx.from.first_name}\n\n\n`
-	let kanalid = -1513355119
+	let kanalid = -1001424334391
 	var seliqe = `Etdiyi etiraf ✍️ : ${metn}\n\n\n`
 	var sonda = 'Etiraf etmək üçün ☂️ : @EtirafAzBot -a yazın.'
 	ctx.telegram.sendMessage(kanalid, `${aciqetiraf+seliqe+sonda}`)
@@ -64,7 +64,7 @@ bot.action("Açıq 💃🏻 ", ctx => {
 bot.action("Anonim 👤 ", ctx => {
 	let eden = ctx.from.first_name 
 	let aciqetiraf= `Etiraf edən şəxs 👤 : Anonim\n\n\n`
-	let kanalid = -1513355119
+	let kanalid = -1001424334391
 	var seliqe = `Etdiyi etiraf ✍️ : ${metn}\n\n\n`
 	var sonda = 'Etiraf etmək üçün 💁🏼‍♀️ : @EtirafAzBot-a yazın.'
 	ctx.telegram.sendMessage(kanalid, `${eden}\n\n\n${aciqetiraf+seliqe+sonda}`)
