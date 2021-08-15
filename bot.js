@@ -6,9 +6,7 @@ const bot = new Telegraf('1984021148:AAG5yLYXcrOFkb642hpIBVljzVZOwr8_YLs')
 bot.start(ctx => {
     ctx.telegram.sendMessage(
         ctx.chat.id,
-	return ctx.replyWithMarkdown(trueTrim(`
-        Salam $(ctx.from.first_name), bota etiraf etmək istədiyin mesajı yazırsan və kanalda paylaşılır.\n\nEtirafınızı yazdıxdan sonra Anonim(gizli) yoxsa Açıx paylaşım soruşacam ✅
-	Buyur bir etiraf et 💁🏼‍♀️`,
+	 `Salam $(ctx.from.first_name), bota etiraf etmək istədiyin mesajı yazırsan və kanalda paylaşılır.\n\nEtirafınızı yazdıxdan sonra Anonim(gizli) yoxsa Açıx paylaşım soruşacam ✅\n\nBuyur Bir Etiraf Et 💁🏼‍♀️`,
         {
             reply_markup: {
                 inline_keyboard: [
