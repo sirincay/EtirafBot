@@ -8,7 +8,7 @@ bot.start(ctx => {
         ctx.chat.id,
 	return ctx.replyWithMarkdown(trueTrim(`
         Salam $(ctx.from.first_name), bota etiraf etmək istədiyin mesajı yazırsan və kanalda paylaşılır.\n\nEtirafınızı yazdıxdan sonra Anonim(gizli) yoxsa Açıx paylaşım soruşacam ✅
-	Buyur bir etiraf et 💁🏼‍♀️`,)
+	Buyur bir etiraf et 💁🏼‍♀️`,
         {
             reply_markup: {
                 inline_keyboard: [
