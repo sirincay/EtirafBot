@@ -1,3 +1,9 @@
+// Repo Sahibi - github.com/sirincay
+// Telegram - t.me/HusnuEhedov
+////////////////////////////////////////
+// Başka github hesabına yükləməy olmaz
+// Reponu öz adına çıxaran peysərdi...!!!
+
 const { Telegraf,Telegram  } = require('telegraf')
 const config = require("./config")
 const telegram = new Telegram(config.token)
@@ -38,7 +44,7 @@ bot.action('etirafbuton', ctx=>{
 let etiraf;
 
 bot.on("text", ctx => {
-	let kanalid = 1108583389
+	let kanalid = -1001611084249 // KANAL ID BURA YAZ
 	etiraf = ctx.message.text
     ctx.telegram.sendMessage(ctx.from.id, `📍 Etirafınız necə paylaşılsın?`, {
 	reply_markup: {
@@ -55,7 +61,7 @@ bot.on("text", ctx => {
 
 bot.action("aciqetiraf", async (ctx, next) => {
 	let aciqetiraf= `${config.aciqetirafeden} ${ctx.from.first_name}\n\n\n`
-	let kanalid = -1001611084249
+	let kanalid = -1001611084249 // KANAL ID BURA YAZ
 	var seliqe = `${config.aciqyazdigietiraf} ${etiraf}\n\n\n`
 	var sonda = `${config.sonluq}`
 	ctx.telegram.sendMessage(kanalid, `${aciqetiraf+seliqe+sonda}`)
@@ -74,7 +80,7 @@ bot.action("aciqetiraf", async (ctx, next) => {
 
 bot.action("anonimetiraf", async (ctx) => {
 	let aciqetiraf = `${config.anonimetiraf} \n\n\n`
-	let kanalid = -1001611084249
+	let kanalid = -1001611084249 // KANAL ID BURA YAZ
 	var seliqe = `${config.anonimyazdigietiraf} ${etiraf}\n\n\n`
 	var sonda = `${config.sonluq}`
 	ctx.telegram.sendMessage(kanalid, `${aciqetiraf+seliqe+sonda}`)
@@ -92,7 +98,7 @@ bot.action("anonimetiraf", async (ctx) => {
 })
 
 
-//xətaları göstərsin
+//Kiçik xətalar olduğu halda dayanmağa icazə vermir və bot davam edir
 bot.catch((err) => {
     console.log('Error: ', err)
 })
