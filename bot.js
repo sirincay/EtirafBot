@@ -1,3 +1,8 @@
+const { Telegraf,Telegram  } = require('telegraf')
+const config = require("./config")
+const telegram = new Telegram(config.token)
+const bot = new Telegraf(config.token)
+
 bot.command('start', (ctx) => { 
         ctx.chat.id,
 	ctx.replyWithHTML(`👋🏼 <b><i><a href="tg://user?id=${ctx.from.id}">${ctx.from.first_name}</a></i></b> ${config.startmesaj}`,			 
