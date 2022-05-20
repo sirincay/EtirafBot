@@ -1,6 +1,7 @@
-const { Telegraf } = require('telegraf')
-
-const bot = new Telegraf('1706512412:AAEUch7IDmTGOFmy1sbI9J5AKQnMhBUYyeQ')
+const { Telegraf,Telegram  } = require('telegraf')
+const config = require("./config")
+const telegram = new Telegram(config.token)
+const bot = new Telegraf(config.token)
 
 
 bot.start(ctx => {
