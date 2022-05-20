@@ -7,7 +7,7 @@ const bot = new Telegraf(config.token)
 bot.command('start', (ctx) => { 
 if (ctx.chat.type !== 'private') return null;
 	ctx.chat.id,
-	ctx.replyWithHTML(`Salam <a href="tg://user?id=${ctx.from.id}">${ctx.from.first_name}</a> , bota etiraf etmək istədiyin mesajı yazırsan və kanalda paylaşılır.\n\nEtirafınızı yazdıxdan sonra Anonim(gizli) yoxsa Açıx paylaşım soruşacam ✅\n\nBuyur Bir Etiraf Et 💁🏼‍♀️`,
+	ctx.replyWithHTML(`👋🏼 <a href="tg://user?id=${ctx.from.id}">${ctx.from.first_name}</a> ${config.startmesaj}`,
 	{
 		reply_markup:{
 			inline_keyboard:[
@@ -53,10 +53,10 @@ ctx.telegram.sendMessage(ctx.from.id, 'Etirafınız necə paylaşılsın?',{
 
 bot.action("aciq", ctx => {
 	let aciqetiraf= `${config.aciqetirafeden} ${ctx.from.first_name}\n\n\n`
-	let kanalid = `${config.kanalid}` 
-	var seliqe = `${config.aciqyazdigietiraf} ${etiraf}\n\n\n`
-	var sonda = `${config.sonluq}`
-	ctx.telegram.sendMessage(kanalid, `${aciqetiraf+seliqe+sonda}`)
+	let gondermek = `${config.kanalid}` 
+	var yazib = `${config.aciqyazdigietiraf} ${etiraf}\n\n\n`
+	var sonluqqaqa = `${config.sonluq}`
+	ctx.telegram.sendMessage(gondermek, `${aciqetiraf+yazib+sonluqqaqa}`)
 	ctx.reply(`Etirafınız göndərildi❕\nAdmin Tərəfindən Yoxlanılıb ${config.etirafkanal} Kanalında Paylaşılacaq 🧞‍♀️`)
 })
 
@@ -64,10 +64,10 @@ bot.action("aciq", ctx => {
 
 bot.action("anonim", ctx => {
 	let aciqetiraf= `${config.anonimetirafeden} Anonim\n\n\n`
-	let kanalid = `${config.kanalid}`
-	var seliqe = `${config.anonimyazdigietiraf} ${etiraf}\n\n\n`
-	var sonda = `${config.sonluq}`
-	ctx.telegram.sendMessage(kanalid, `\${aciqetiraf+seliqe+sonda}`)
+	let gondermek = `${config.kanalid}`
+	var yazib = `${config.anonimyazdigietiraf} ${etiraf}\n\n\n`
+	var sonluqqaqa = `${config.sonluq}`
+	ctx.telegram.sendMessage(gondermek, `\${aciqetiraf+yazib+sonluqqaqa}`)
 	ctx.reply(`Etirafınız göndərildi❕\nAdmin Tərəfindən Yoxlanılıb ${config.etirafkanal} Kanalında Paylaşılacaq 🧞‍♀️`)
 })
 
