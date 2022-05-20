@@ -1,3 +1,9 @@
+// Repo Sahibi - github.com/sirincay
+// Telegram - t.me/HusnuEhedov
+////////////////////////////////////////
+// Başka github hesabına yükləməy olmaz
+// Reponu öz adına çıxaran peysərdi...!!!
+
 module.exports = ({
 
 token: "TOKEN YAZ BURA GÖZƏL İNSAN",
