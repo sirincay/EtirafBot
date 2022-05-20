@@ -9,7 +9,8 @@ const config = require("./config")
 const telegram = new Telegram(config.token)
 const bot = new Telegraf(config.token)
 
-bot.command('start', (ctx) => { 
+bot.command('start', (ctx) => {
+if (ctx.chat.type !== 'private') return null; // Əmirin sadəcə özəldə aktif olması üçün
         ctx.chat.id,
 	ctx.replyWithHTML(`👋🏼 <b><i><a href="tg://user?id=${ctx.from.id}">${ctx.from.first_name}</a></i></b> ${config.startmesaj}`,			 
 	    {
@@ -44,6 +45,7 @@ bot.action('etirafbuton', ctx=>{
 let etiraf;
 
 bot.on("text", ctx => {
+	if (ctx.chat.type !== 'private') return null; // Sadəcə özəldə aktif olsun deyə
 	let kanalid = -1001611084249 // KANAL ID BURA YAZ
 	etiraf = ctx.message.text
     ctx.telegram.sendMessage(ctx.from.id, `📍 Etirafınız necə paylaşılsın?`, {
