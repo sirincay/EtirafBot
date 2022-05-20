@@ -15,7 +15,7 @@
 ```
 sudo apt install nodejs
 sudo apt install npm
-npm install telegraf
+npm install telegraf --save
 ```
 - 2. Repo'yu Klonlayın.
 ```
