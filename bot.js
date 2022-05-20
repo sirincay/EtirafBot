@@ -1,77 +1,93 @@
-const { Telegraf,Telegram  } = require('telegraf')
-const config = require("./config")
-const telegram = new Telegram(config.token)
-const bot = new Telegraf(config.token)
-
-
 bot.command('start', (ctx) => { 
-if (ctx.chat.type !== 'private') return null;
-	ctx.chat.id,
-	ctx.replyWithHTML(`👋🏼 <a href="tg://user?id=${ctx.from.id}">${ctx.from.first_name}</a> ${config.startmesaj}`,
-	{
-		reply_markup:{
-			inline_keyboard:[
-				[{text: "Etiraf Kanalı 📣", url: "https://t.me/confessaz"}]
-		}
-	})
+        ctx.chat.id,
+	ctx.replyWithHTML(`👋🏼 <b><i><a href="tg://user?id=${ctx.from.id}">${ctx.from.first_name}</a></i></b> ${config.startmesaj}`,			 
+	    {
+           reply_markup:{
+            inline_keyboard:[
+                [{text:"🔔 Etiraf Et",  callback_data:'etirafbuton'}]
+            ]
+        }
+    }) 
+})
+
+bot.action('start', (ctx) => { 
+        ctx.chat.id,
+        ctx.deleteMessage()
+	ctx.replyWithHTML(`👋🏼 <b><i><a href="tg://user?id=${ctx.from.id}">${ctx.from.first_name}</a></i></b> ${config.startmesaj}`,			 
+	    {
+            reply_markup:{
+            inline_keyboard:[
+                [{text:"🔔 Etiraf Et",  callback_data:'etirafbuton'}]
+            ]
+        }
+    })
 })
 
 
-
-
-
-bot.command("admin", ctx => {
-	if(ctx.from.id===1108583389){
-		ctx.reply("Giriş uğurludur.")
-	}else{
-		ctx.reply("Giriş uğursuzdur.")
-	
-	}
+bot.action('etirafbuton', ctx=>{
+	ctx.deleteMessage()
+	ctx.telegram.sendMessage(ctx.chat.id, '✍️ *Buyurun,Etirafınızı Yazın*', { parse_mode: 'MarkdownV2' });
 })
-
 
 
 let etiraf;
 
 bot.on("text", ctx => {
-	 if (ctx.chat.type !== 'private') return null;
-	let kanalid = `${config.kanalid}` //Gönderilmesi istenilen kanalın ID
-	metn = ctx.message.text
-ctx.telegram.sendMessage(ctx.from.id, 'Etirafınız necə paylaşılsın?',{
+	let kanalid = 1108583389
+	etiraf = ctx.message.text
+    ctx.telegram.sendMessage(ctx.from.id, `📍 Etirafınız necə paylaşılsın?`, {
 	reply_markup: {
 		inline_keyboard: [
 		
-		[{text: 'Anonim 👤 ', callback_data: 'anonim'}],
-		[{text: 'Açıq 💃 ', callback_data: 'aciq'}]
+		[{text: '🔐 Anonim ', callback_data: 'anonimetiraf'}],
+		[{text: '🗣 Açıq ', callback_data: 'aciqetiraf'}]
 		
 		]
-	}
+	}	
 })
-	
-
 })
 
-bot.action("aciq", ctx => {
+
+bot.action("aciqetiraf", async (ctx, next) => {
 	let aciqetiraf= `${config.aciqetirafeden} ${ctx.from.first_name}\n\n\n`
-	let gondermek = `${config.kanalid}` 
-	var yazib = `${config.aciqyazdigietiraf} ${etiraf}\n\n\n`
-	var sonluqqaqa = `${config.sonluq}`
-	ctx.telegram.sendMessage(gondermek, `${aciqetiraf+yazib+sonluqqaqa}`)
-	ctx.reply(`Etirafınız göndərildi❕\nAdmin Tərəfindən Yoxlanılıb ${config.etirafkanal} Kanalında Paylaşılacaq 🧞‍♀️`)
+	let kanalid = -1001611084249
+	var seliqe = `${config.aciqyazdigietiraf} ${etiraf}\n\n\n`
+	var sonda = `${config.sonluq}`
+	ctx.telegram.sendMessage(kanalid, `${aciqetiraf+seliqe+sonda}`)
+	ctx.deleteMessage()
+	await ctx.replyWithHTML(`<a href="tg://user?id=${ctx.from.id}">${ctx.from.first_name}</a> yazdığınız etirafa görə təşəkkürlər`,			 
+	    {
+            reply_markup: { 
+                inline_keyboard: [
+                    [{text: `${config.yenidenetiraf}`, callback_data:'etirafbuton' }]
+                ]
+            }
+       }
+    
+     )
+})
+
+bot.action("anonimetiraf", async (ctx) => {
+	let aciqetiraf = `${config.anonimetiraf} \n\n\n`
+	let kanalid = -1001611084249
+	var seliqe = `${config.anonimyazdigietiraf} ${etiraf}\n\n\n`
+	var sonda = `${config.sonluq}`
+	ctx.telegram.sendMessage(kanalid, `${aciqetiraf+seliqe+sonda}`)
+	ctx.deleteMessage()
+	await ctx.replyWithHTML(`<a href="tg://user?id=${ctx.from.id}">${ctx.from.first_name}</a> yazdığınız etirafa görə təşəkkürlər`,			 
+	    {
+            reply_markup: { 
+                inline_keyboard: [
+                    [{text: `${config.yenidenetiraf}`, callback_data:'etirafbuton' }]
+                ]
+            }
+       }
+    
+     )
 })
 
 
-
-bot.action("anonim", ctx => {
-	let aciqetiraf= `${config.anonimetirafeden} Anonim\n\n\n`
-	let gondermek = `${config.kanalid}`
-	var yazib = `${config.anonimyazdigietiraf} ${etiraf}\n\n\n`
-	var sonluqqaqa = `${config.sonluq}`
-	ctx.telegram.sendMessage(gondermek, `\${aciqetiraf+yazib+sonluqqaqa}`)
-	ctx.reply(`Etirafınız göndərildi❕\nAdmin Tərəfindən Yoxlanılıb ${config.etirafkanal} Kanalında Paylaşılacaq 🧞‍♀️`)
-})
-
-// Kiçik xətalar olduğu halda bot davam edəcək
+//xətaları göstərsin
 bot.catch((err) => {
     console.log('Error: ', err)
 })
@@ -83,3 +99,7 @@ bot.telegram.getMe().then(botInfo => {
 })
 
 bot.launch()
+
+// Bu, botumuzu yavaşca dayandırmağa imkan verir.
+process.once('SIGINT', () => bot.stop('SIGINT'))
+process.once('SIGTERM', () => bot.stop('SIGTERM'))
