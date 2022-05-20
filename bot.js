@@ -4,19 +4,18 @@ const telegram = new Telegram(config.token)
 const bot = new Telegraf(config.token)
 
 
-bot.start(ctx => {
-    ctx.telegram.sendMessage(
-        ctx.chat.id,
-	 `Salam $(ctx.username) , bota etiraf etmək istədiyin mesajı yazırsan və kanalda paylaşılır.\n\nEtirafınızı yazdıxdan sonra Anonim(gizli) yoxsa Açıx paylaşım soruşacam ✅\n\nBuyur Bir Etiraf Et 💁🏼‍♀️`,
-        {
-            reply_markup: {
-                inline_keyboard: [
-                    [{text: "Etiraf Et 📌", url: "https://t.me/husnuehedov" }, {text: "Etiraf Kanalı 📣", url: "https://t.me/confessaz"}]
-                ]
-            }
-       }
-    )
-});
+bot.command('start', (ctx) => { 
+if (ctx.chat.type !== 'private') return null;
+	ctx.chat.id,
+	ctx.replyWithHTML(`Salam <a href="tg://user?id=${ctx.from.id}">${ctx.from.first_name}</a> , bota etiraf etmək istədiyin mesajı yazırsan və kanalda paylaşılır.\n\nEtirafınızı yazdıxdan sonra Anonim(gizli) yoxsa Açıx paylaşım soruşacam ✅\n\nBuyur Bir Etiraf Et 💁🏼‍♀️`,
+	{
+		reply_markup:{
+			inline_keyboard:[
+				[{text: "Etiraf Kanalı 📣", url: "https://t.me/confessaz"}]
+		}
+	})
+})
+
 
 
 
@@ -32,17 +31,18 @@ bot.command("admin", ctx => {
 
 
 
-let metn;
+let etiraf;
 
 bot.on("text", ctx => {
-	let kanalid = -1001424334391
+	 if (ctx.chat.type !== 'private') return null;
+	let kanalid = `${config.kanalid}` //Gönderilmesi istenilen kanalın ID
 	metn = ctx.message.text
 ctx.telegram.sendMessage(ctx.from.id, 'Etirafınız necə paylaşılsın?',{
 	reply_markup: {
 		inline_keyboard: [
 		
-		[{text: 'Anonim 👤 ', callback_data: 'Anonim 👤 '}],
-		[{text: 'Açıq 💃 ', callback_data: 'Açıq 💃🏻 '}]
+		[{text: 'Anonim 👤 ', callback_data: 'anonim'}],
+		[{text: 'Açıq 💃 ', callback_data: 'aciq'}]
 		
 		]
 	}
@@ -51,26 +51,27 @@ ctx.telegram.sendMessage(ctx.from.id, 'Etirafınız necə paylaşılsın?',{
 
 })
 
-bot.action("Açıq 💃🏻 ", ctx => {
-	let aciqetiraf= `👤Etiraf edən istifadəçi: ${ctx.from.first_name}\n\n\n`
-	let kanalid = -1001424334391
-	var seliqe = `✏️Yazdığı Etiraf: ${metn}\n\n\n`
-	var sonda = 'Etiraf etmək üçün ☂️ : @ConfessAzBot -a yazın.'
+bot.action("aciq", ctx => {
+	let aciqetiraf= `${config.aciqetirafeden} ${ctx.from.first_name}\n\n\n`
+	let kanalid = `${config.kanalid}` 
+	var seliqe = `${config.aciqyazdigietiraf} ${etiraf}\n\n\n`
+	var sonda = `${config.sonluq}`
 	ctx.telegram.sendMessage(kanalid, `${aciqetiraf+seliqe+sonda}`)
-	ctx.reply('Etirafınız göndərildi❕\nAdmin Tərəfindən Yoxlanılıb @ConfessAz Kanalında Paylaşılacaq 🧞‍♀️')
+	ctx.reply(`Etirafınız göndərildi❕\nAdmin Tərəfindən Yoxlanılıb ${config.etirafkanal} Kanalında Paylaşılacaq 🧞‍♀️`)
 })
 
 
 
-bot.action("Anonim 👤 ", ctx => {
-	let aciqetiraf= `👤Etiraf edən istifadəçi: Anonim\n\n\n`
-	let kanalid = -1001424334391
-	var seliqe = `✏️Yazdığı Etiraf: ${metn}\n\n\n`
-	var sonda = '💁Etiraf Etmək Üçün: @ConfessAzBot -a yazın.'
-	ctx.telegram.sendMessage(kanalid, `${eden}\n\n\n${aciqetiraf+seliqe+sonda}`)
-	ctx.reply('Etirafınız göndərildi❕\nAdmin Tərəfindən Yoxlanılıb @ConfessAz Kanalında Paylaşılacaq 🧞‍♀️')
+bot.action("anonim", ctx => {
+	let aciqetiraf= `${config.anonimetirafeden} Anonim\n\n\n`
+	let kanalid = `${config.kanalid}`
+	var seliqe = `${config.anonimyazdigietiraf} ${etiraf}\n\n\n`
+	var sonda = `${config.sonluq}`
+	ctx.telegram.sendMessage(kanalid, `\${aciqetiraf+seliqe+sonda}`)
+	ctx.reply(`Etirafınız göndərildi❕\nAdmin Tərəfindən Yoxlanılıb ${config.etirafkanal} Kanalında Paylaşılacaq 🧞‍♀️`)
 })
 
+// Kiçik xətalar olduğu halda bot davam edəcək
 bot.catch((err) => {
     console.log('Error: ', err)
 })
