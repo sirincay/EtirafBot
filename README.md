@@ -2,7 +2,7 @@
   <h1> NodeJs ilə yazılmış sadə Etiraf Botu</h1>
 </div>
 <p align="center">
-    Reponu başqa yerdə paylaşmaq qadağandır
+    <b>Reponu Başqa Yerdə Paylaşmaq Qadağandır ❗️</b>
 </p>
 
 ----
