@@ -29,5 +29,7 @@ nano config.js
 - 4. Botu Başladın.
 ```
 node bot.js
-```
-
+```     
+<div align="center">
+ <b>Author: <a href="t.me/husnuehedov">Hüsnü Ehedov 🇦🇿/🇹🇷</a></b>
+</div>
