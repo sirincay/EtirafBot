@@ -1,6 +1,6 @@
 <div align="center">
   <h1> NodeJs ilə yazılmış sadə Etiraf Botu</h1>
-   <b>Author: <a href="t.me/husnuehedov">Hüsnü Ehedov 🇦🇿/🇹🇷</a></b>
+   <b>Author: <a href="https://t.me/husnuehedov">Hüsnü Ehedov 🇦🇿/🇹🇷</a></b>
 </div>
 <p align="center">
     <b>Reponu Başqa Yerdə Paylaşmaq Qadağandır ❗️</b>
