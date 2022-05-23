@@ -1,5 +1,7 @@
 <div align="center">
-  <h1> NodeJs ilə yazılmış sadə Etiraf Botu</h1>
+  <h1> NodeJs ilə yazılmış sadə Etiraf Botu
+   <b>Author: <a href="t.me/husnuehedov">Hüsnü Ehedov 🇦🇿/🇹🇷</a></b>
+</h1>
 </div>
 <p align="center">
     <b>Reponu Başqa Yerdə Paylaşmaq Qadağandır ❗️</b>
@@ -30,6 +32,4 @@ nano config.js
 ```
 node bot.js
 ```     
-<div align="center">
- <b>Author: <a href="t.me/husnuehedov">Hüsnü Ehedov 🇦🇿/🇹🇷</a></b>
-</div>
+
